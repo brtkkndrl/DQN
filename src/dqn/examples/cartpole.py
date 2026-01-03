@@ -1,5 +1,5 @@
-import gymnasium as gym
 from dqn import TrainingEvaluator, TrainerDQN, TrainerDQNHyperparams
+import gymnasium as gym
 import torch.nn as nn
 
 class CartPoleNN(nn.Module):
@@ -54,17 +54,7 @@ def main():
 
     dqn.learn(env=env, target_timesteps=10_000)
 
-    #dqn.save_to_file("carpole_1")
-
     callback.draw_graphs()
-
-    # test_env = gym.make("CartPole-v1", render_mode="human")
-    # obs, _ = test_env.reset()
-    # while True: 
-    #     action = dqn.predict(obs)
-    #     obs, _, terminated, truncated, _ = test_env.step(action)
-    #     if terminated or truncated:
-    #         obs, _ = test_env.reset()
 
 if __name__ == "__main__":
     main()

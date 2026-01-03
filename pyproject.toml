@@ -22,4 +22,4 @@ examples = [
 ]
 
 [project.scripts]
-dqn_cartpole = "dqn.examples.cartpole:main"
+dqn_example_cartpole = "dqn.examples.cartpole:main"
