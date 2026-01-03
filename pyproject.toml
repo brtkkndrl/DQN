@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools >= 77.0.3"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dqn"
+version = "0.1.0"
+description = "Deep Q-Network training library."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.8"
+dependencies = [
+    "numpy>=2.0.2",
+    "torch>=2.8.0",
+    "matplotlib>=3.10.7"
+]
