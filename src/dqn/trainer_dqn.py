@@ -11,7 +11,7 @@ import io
 
 from dataclasses import dataclass
 
-from .replay_buffer import ReplayBufferDQNFramestack
+from .replay_buffer import ReplayBufferDQNFramestack, ReplayBufferDQNBasic
 
 class ModelDQNDueling(nn.Module):
     def __init__(self, feature_extractor, actions_dim):
@@ -129,10 +129,15 @@ class TrainerDQN:
 
         if self._mode == "train":
             # replay buffer
-            self._replay_buffer = ReplayBufferDQNFramestack(capacity = self.hyperparameters.replay_buffer_size,
+            if self.hyperparameters.frame_stack > 1:
+                self._replay_buffer = ReplayBufferDQNFramestack(capacity = self.hyperparameters.replay_buffer_size,
                                                             obs_space_shape = obs_space_shape,
                                                             obs_space_dtype = obs_space_dtype,
                                                             frame_stack = self.hyperparameters.frame_stack)
+            else:
+                self._replay_buffer = ReplayBufferDQNBasic(capacity=self.hyperparameters.replay_buffer_size,
+                                                           obs_space_shape = obs_space_shape,
+                                                           obs_space_dtype = obs_space_dtype)
 
         # training progress parameters
         self._current_timestep = 0
@@ -281,7 +286,10 @@ class TrainerDQN:
         while self._current_timestep < self._target_timesteps:
             # select action
             exploration_rate = self._get_exploration_rate(self._current_timestep, self._target_timesteps)
-            action = self._select_action(self._replay_buffer.fill_frames(obs), exploration_rate)
+            if isinstance(self._replay_buffer, ReplayBufferDQNFramestack):
+                action = self._select_action(self._replay_buffer.fill_frames(obs), exploration_rate)
+            else:
+                action = self._select_action(obs, exploration_rate)
             # execute action
             next_obs, reward, done, truncated, info = self._env.step(action)
             # store transition in replay buffer

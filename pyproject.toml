@@ -14,3 +14,12 @@ dependencies = [
     "torch>=2.8.0",
     "matplotlib>=3.10.7"
 ]
+
+[project.optional-dependencies]
+examples = [
+    "gymnasium>=1.2.2",
+    "torch>=2.8.0"
+]
+
+[project.scripts]
+dqn_cartpole = "dqn.examples.cartpole:main"
