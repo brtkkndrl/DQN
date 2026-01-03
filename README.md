@@ -1,1 +1,1 @@
-# Deep Q-learning
+# Deep Q-Networks
