@@ -2,29 +2,37 @@
 
 This project implements a framework for training Deep Q-Networks with enhancements such as **Double DQN**, **Dueling DQN**, and **Lazy Frame Stacking**. The core Deep Q-Learning implementation is based on the paper ["Playing Atari with Deep Reinforcement Learning"](http://arxiv.org/abs/1312.5602) by Mnih et al. (2013).
 
-[Example usage](src/dqn/examples/cartpole.py)
+### Example usage: Cart Pole
 
-### Example training
+[Source code](src/dqn/examples/cartpole.py)
+
+![Reward over time graph.](docs/example.png)
 ```
 ----------------------------------
 | rollout/            |          |
-|   ep_len_mean       |  153.75  |
-|   ep_rew_mean       |  153.75  |
+|   ep_len_mean       |  175.00  |
+|   ep_rew_mean       |  175.00  |
 | stats/              |          |
-|   episodes          |  132     |
-|   fps               |  319     |
-|   total_timesteps   |  6081    |
+|   episodes          |  160     |
+|   fps               |  325     |
+|   total_timesteps   |  9304    |
 ------------------------------------------
-|   best_model_reward       |  279.60    |
-|   model_updates           |  5081      |
+|   best_model_reward       |  252.60    |
+|   model_updates           |  8304      |
 |   exploration_rate        |  0.01      |
 |   replay_buffer_size      |  0.22   MB |
-|   replay_buffer_filled    |  61.32 %  |
+|   replay_buffer_filled    |  93.55 %  |
 ------------------------------------------
-|   elapsed                 | 00:00:18   |
-|   done                    |  60.81 %   |
-|   est_remaining           | 00:00:11   |
+|   elapsed                 | 00:00:29   |
+|   done                    |  93.04 %   |
+|   est_remaining           | 00:00:02   |
 ------------------------------------------
+----------------------------------
+| Training finished!             |
+----------------------------------
+|   best_eval_reward  |  252.60  |
+|   training_time     | 00:00:32 |
+----------------------------------
 ```
 
 ### Install package
