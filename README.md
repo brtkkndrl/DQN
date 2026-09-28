@@ -1,6 +1,6 @@
 # Deep Q-Networks
 
-This project implements a framework for training Deep Q-Networks with enhancements such as **Double DQN**, **Dueling DQN**, and **Lazy Frame Stacking**. The core Deep Q-Learning implementation is based on the paper ["Playing Atari with Deep Reinforcement Learning"](http://arxiv.org/abs/1312.5602) by Mnih et al. (2013).
+This project implements a framework for training Deep Q-Networks with enhancements such as **Double DQN**, **Dueling DQN**, and **Lazy Frame Stacking**. The core Deep Q-Learning implementation is based on the paper ["Playing Atari with Deep Reinforcement Learning"](http://arxiv.org/abs/1312.5602) by Mnih et al. (2013). Uses a memmory optimized replay buffer implementation for frame stacking.
 
 ### Example usage: Cart Pole
 
